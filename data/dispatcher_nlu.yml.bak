@@ -1,0 +1,127 @@
+version: "3.1"
+
+nlu:
+
+- intent: user_wants_recommendation
+  examples: |
+    - can you please recommend me some thing?
+    - what can i do?
+    - sugest me something 
+    - tell me what I can do in the afternoon?
+    - user_recommendation
+    - Recommendation_services
+     
+- intent: user_select_Financial_Advisory
+  examples: |
+    - do you know how can i make money?
+    - do you have any Idea to make money
+    - do you know what stock I can buy?
+    - what stock should i buy?
+    - can you suggest me some stock to buy
+    - show me the best portfolio
+    - build a portfolio
+    - can you please help me with building a stock portfolio
+    - stock to buy
+    - how's the market
+    - Want_Buils_a_Portfolio
+    - Financial_Advisory
+    
+- intent: user_select_entertainment
+  examples: |
+    - I am bored
+    - cheer me up
+    - I am home tell me what can I do
+    - I feel down
+    - I am lazy
+    - recommend me some some fun
+    - how can I have fun
+    - can you tell me some entertainment 
+    - entertainment
+    - entertainment_recommendation
+   
+# - intent: user_recommendation_entertainment_select
+#   examples: |
+#     - At_Home
+#     - Out_Door_Activity
+   
+- intent: user_select_movie_recommender
+  examples: |
+    - suggest me a good movie
+    - waht can I watch now
+    - I like action movies
+    - any good movie suggestion
+    - any movie suggestion
+    - how about watching some movies
+    - let see some movies
+    - Watch_Movie
+    - Movie_master
+
+
+- intent: user_movie_master_genre
+  examples: |
+    - movie_master_genre
+    - movie recmmendatio using genre
+    - movie_genre
+    - genre
+
+- intent: user_movie_master_name
+  examples: |
+    - movie_master_name
+    - movie recmmendatio using name
+    - movie_name
+    - remonadation using movie names
+   
+
+- intent: user_select_cocktail
+  examples: |
+    - suggest me a cocktail
+    - any cocktail recipient?
+    - I like to drink
+    - make me a cocktail
+    - Make me a Drink
+    - something to drink
+    - Cocktail master Please
+    - Cocktail_Master
+
+
+- intent: user_cocktail_master_ingredients
+  examples: |
+    - cocktail_master_ingredients
+    - ingredients
+    - cocktail ingredients
+    - ingredient
+
+
+- intent: user_cocktail_master_name
+  examples: |
+    - cocktail_master_name
+    - cocktail master name
+    - cocktail name
+    - using name
+    - find a cocktail like [pornsatar](cocktail_name)
+    - any cocktail like [sex and the beach](cocktail_name)
+
+
+- intent: user_select_pa
+  examples: |
+    - Personal Assistant Services
+    - Personal_Assistant_Services
+    - help me with 
+    - assist me 
+- intent: user_select_news_picker
+  examples: |
+    - News_Picker
+    - find me latest news about [ethereum](news_titel)
+    - any news regarding [cryptocurrency](news_titel)
+    - what do you know about [babak ea](news_titel)
+    - who is [babak ea](news_titel)
+
+
+- intent: user_selct_nlp
+  examples: |
+    - NLP_Analysis
+    - text analysis
+    - Text_summary
+    - NER analysis
+    - text paraphrising
+    - text summerization

@@ -1,0 +1,23 @@
+version: "3.1"
+
+stories:
+  ########################## form_news_analysis #############
+  # - movie_genre  #### Action , Validation 
+- story: form_news_analysis
+  steps:
+  # - intent: greet
+  # - action: utter_greet
+
+  - intent: user_select_news_picker # charactristic
+  - action: form_news_analysis
+  - active_loop: form_news_analysis
+
+  - slot_was_set:
+    - requested_slot: news_titel
+  - slot_was_set:
+    - news_titel: babak ea
+
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_re_greet

@@ -1,0 +1,43 @@
+version: "3.1"
+
+stories:
+  ########################## form_cocktail_ingridiants #############
+  # - cocktail_ingrid  #### Action , Validation 
+- story: form_cocktail_ingridiants
+  steps:
+  # - intent: greet
+  # - action: utter_greet
+
+  - intent: user_cocktail_master_ingredients # charactristic
+  - action: form_cocktail_ingridiants
+  - active_loop: form_cocktail_ingridiants
+
+  - slot_was_set:
+    - requested_slot: cocktail_ingrid
+  - slot_was_set:
+    - cocktail_ingrid: vodka
+
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_re_greet
+
+  ########################## form_cocktail_name #############
+  # - cocktail_name  #### Action , Validation 
+- story: form_cocktail_name
+  steps:
+  # - intent: greet
+  # - action: utter_greet
+  - intent: user_cocktail_master_name
+  - action: form_cocktail_name
+  - active_loop: form_cocktail_name
+
+  - slot_was_set:
+    - requested_slot: cocktail_name
+  - slot_was_set:
+    - cocktail_name: pornstar
+
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_re_greet

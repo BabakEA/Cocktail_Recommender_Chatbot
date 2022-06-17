@@ -1,0 +1,57 @@
+version: "3.1"
+
+stories:
+
+- story: utter_recommend_somthing
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: user_wants_recommendation
+  - action: utter_recommend
+
+
+
+- story: utter_recommend_Financial
+  steps:
+  # - intent: greet
+  # - action: utter_greet
+  # - intent: user_wants_recommendation
+  # - action: utter_recommend
+  - intent: user_select_Financial_Advisory
+  - action: utter_recommend_Financial_Advisory ### domain witcher web 
+
+
+- story: user_movie_recommender
+  steps:
+  # - intent: greet
+  # - action: utter_greet
+  # - intent: user_wants_recommendation
+  # - action: utter_recommend
+  - intent: user_select_entertainment
+  - action: utter_recommend_entertainment
+  - intent: user_select_movie_recommender
+  - action: utter_Movie_master_r
+
+
+  ############### PA Story #######
+- story: story_personal_assistant
+  steps:
+  # - intent: greet
+  # - action: utter_greet
+  # - intent: user_wants_recommendation
+  # - action: utter_recommend
+  - intent: user_select_pa
+  - action: utter_PA_service ### domain witcher web 
+
+
+
+- story: user_cocktail_recommender
+  steps:
+  # - intent: greet
+  # - action: utter_greet
+  # - intent: user_wants_recommendation
+  # - action: utter_recommend
+  - intent: user_select_entertainment
+  - action: utter_recommend_entertainment
+  - intent: user_select_cocktail
+  - action: utter_cocktail_master_r

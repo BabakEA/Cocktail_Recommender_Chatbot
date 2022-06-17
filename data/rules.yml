@@ -1,0 +1,141 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+
+
+################################
+
+- rule: Say reset anytime the user says goodbye
+  steps:
+  - intent: user_reset
+  - action: action_reset
+  - action: utter_re_greet
+  wait_for_user_input: false
+
+
+
+  #######################
+- rule: Activate form_movie_genr_r
+  steps:
+  - intent: user_movie_master_genre
+  - action: form_movie_genr_r
+  - active_loop: form_movie_genr_r
+
+- rule: Submit form_movie_genr_r
+  condition:
+  - active_loop: form_movie_genr_r
+  steps:
+  - action: form_movie_genr_r
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # - action: utter_submit_swift_form
+  - action: utter_re_greet
+
+##############################################3
+- rule: Activate form_movie_name_r
+  steps:
+  - intent: user_movie_master_name
+  - action: form_movie_name_r
+  - active_loop: form_movie_name_r
+
+- rule: Submit form_movie_name_r
+  condition:
+  - active_loop: form_movie_name_r
+  steps:
+  - action: form_movie_name_r
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # - action: utter_submit_swift_form
+  - action: utter_re_greet
+
+
+##############################################3
+- rule: Activate form_news_analysis
+  steps:
+  - intent: user_select_news_picker
+  - action: form_news_analysis
+  - active_loop: form_news_analysis
+
+- rule: Submit form_news_analysis
+  condition:
+  - active_loop: form_news_analysis
+  steps:
+  - action: form_news_analysis
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # - action: utter_submit_swift_form
+  - action: utter_re_greet
+
+
+
+
+##############################################3
+- rule: Activate form_cocktail_ingridiants
+  steps:
+  - intent: user_cocktail_master_ingredients
+  - action: form_cocktail_ingridiants
+  - active_loop: form_cocktail_ingridiants
+
+- rule: Submit form_cocktail_ingridiants
+  condition:
+  - active_loop: form_cocktail_ingridiants
+  steps:
+  - action: form_cocktail_ingridiants
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # - action: utter_submit_swift_form
+  - action: utter_re_greet
+  
+  
+  
+  ##############################################3
+- rule: Activate form_cocktail_name
+  steps:
+  - intent: user_cocktail_master_name
+  - action: form_cocktail_name
+  - active_loop: form_cocktail_name
+
+- rule: Submit form_cocktail_name
+  condition:
+  - active_loop: form_cocktail_name
+  steps:
+  - action: form_cocktail_name
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # - action: utter_submit_swift_form
+  - action: utter_re_greet
+  
+  
+  ##############################################3
+- rule: Activate form_nlp_analysis
+  steps:
+  - intent: user_selct_nlp
+  - action: form_nlp_analysis
+  - active_loop: form_nlp_analysis
+
+- rule: Submit form_nlp_analysis
+  condition:
+  - active_loop: form_nlp_analysis
+  steps:
+  - action: form_nlp_analysis
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # - action: utter_submit_swift_form
+  - action: utter_re_greet

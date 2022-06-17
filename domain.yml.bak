@@ -1,0 +1,388 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+
+  - user_reset
+
+  - user_wants_recommendation
+  - user_select_movie_recommender
+  - user_select_Financial_Advisory
+  - user_select_entertainment
+  - user_movie_master_genre ##### movie_genre
+  - user_movie_master_name ###### movie_name
+  
+  - user_select_pa #### personal assistat
+  - user_select_news_picker 
+  
+  - user_select_cocktail
+  - user_cocktail_master_ingredients
+  - user_cocktail_master_name
+  
+
+
+
+
+
+entities:
+  ################ form_movie_genr_r
+- movie_genre
+- movie_genre_temp
+  ################ form_movie_name_r
+- movie_name
+  ################ form_news_analysis
+- news_titel
+  ################ form_document_analysis
+- doc_str
+  ############### form_words_story
+- words_story
+  ############### form_cocktail_ingridiants
+- cocktail_ingrid
+- cocktail_ingrid_temp
+  ############### form_cocktail_name
+- cocktail_name
+
+
+
+#- account_name
+
+slots:
+  ################ form_movie_genr_r
+  movie_genre:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: form_movie_genr_r
+           requested_slot: movie_genre
+
+
+  movie_genre_temp:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: form_movie_genr_r
+           requested_slot: movie_genre_temp
+
+  ################ form_movie_name_r
+  movie_name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: form_movie_name_r
+           requested_slot: movie_name
+  
+  ################ form_news_analysis
+  news_titel:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: form_news_analysis
+           requested_slot: news_titel
+  ################ form_document_analysis
+  doc_str:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: form_document_analysis
+           requested_slot: doc_str
+  ############### form_words_story
+  words_story:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: form_words_story
+           requested_slot: words_story
+
+
+
+
+  ################ form_cocktail_ingridiants
+  ####- cocktail_ingrid
+  ####- cocktail_ingrid_temp
+  cocktail_ingrid:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: form_cocktail_ingridiants
+           requested_slot: cocktail_ingrid
+
+
+  cocktail_ingrid_temp:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: form_cocktail_ingridiants
+           requested_slot: cocktail_ingrid_temp
+
+  ############### form_cocktail_name
+  #####- cocktail_name
+  cocktail_name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: form_cocktail_name
+           requested_slot: cocktail_name
+
+
+
+
+
+#   money:
+#     type: text
+#     influence_conversation: false
+#     mappings:
+#     - type: from_text
+#       entity: money
+#   
+
+  # transfer_money:
+  #   type: text
+  #   influence_conversation: true
+  #   mappings:
+  #     - type: from_text
+  #       conditions:
+  #        - active_loop: money_transfer_form
+  #          requested_slot: transfer_money
+
+  # Account_check: ###### intersection validation slots to be used
+  #   type: text
+  #   influence_conversation: true
+  #   mappings:
+  #     - type: from_text
+  #       conditions:
+  #        - active_loop: money_transfer_form
+  #          requested_slot: Account_check
+
+  #        - active_loop: swift_transfer_form
+  #          requested_slot: Account_check
+
+  #        - active_loop: account_balance_form
+  #          requested_slot: Account_check
+# forms:
+#   money_transfer_form:
+#     required_slots:
+#       - master_acount
+#       - S_account
+#       - d_account
+#       - transfer_money
+#       - tr_acceptance
+
+forms:
+  form_movie_genr_r:
+    required_slots:
+      - movie_genre
+
+  form_movie_name_r:
+    required_slots:
+      - movie_name
+
+  form_news_analysis:
+    required_slots:
+      - news_titel
+
+  form_document_analysis:
+    required_slots:
+      - doc_str
+
+  ############### form_words_story
+  form_words_story:
+    required_slots:
+      - words_story
+ 
+
+
+  form_cocktail_name:
+    required_slots:
+      - cocktail_name 
+      
+  form_cocktail_ingridiants:
+    required_slots:
+      - cocktail_ingrid 
+#form_cocktail_name
+#form_cocktail_ingridiants
+
+
+responses:
+  # utter_greet:
+  # - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am an Intelligence Virtual Assistant, IVA, powered by Witcher. You can call me Bob.2"
+  utter_chitchat/ask_name:
+  - image: "https://i.imgur.com/zTvA58i.jpeg"
+    text: Hello, my name is Retrieval Bot.
+  - text: I am called Retrieval Bot!
+  utter_chitchat/ask_weather:
+  - text: Oh, it does look sunny right now in Berlin.
+    image: "https://i.imgur.com/vwv7aHN.png"
+  - text: I am not sure of the whole week but I can see the sun is out today.
+
+
+  utter_greet:
+  - buttons:
+    - payload: Recommendation_services
+      title: Recommender services
+
+    - payload: Personal Assistant Services # 
+      title: Personal Assistant Services
+
+    - payload: Data Analytics and Reporting # 
+      title: Data Analytics and Reporting
+
+    - payload: Talk to customer service
+      title: Talk to customer service 
+    
+    text: "Hey! Hope you are doing well. Please let me know how can I help you. To reset the chat please type reset at any time."
+    
+  utter_re_greet:
+  - buttons:
+    - payload: Recommendation_services # financial(Witcher_portfolio),entertaimant(Indor,Outdor), 
+      title: Recommender services
+
+    - payload: Personal Assistant Services # utter_PA_service
+      title: Personal Assistant Services
+
+    - payload: Data Analytics and Reporting # 
+      title: Data Analytics and Reporting
+
+    - payload: Talk to customer service
+      title: Talk to customer service 
+    
+    text: "  "
+    
+  utter_recommend:
+  - buttons:
+    - payload: Financial_Advisory #### link to web
+      title: Financial Advisory
+    - payload: entertainment_recommendation # Entertaiment ==>
+      title: entertainment recommendation
+    text: "Please let me know what would you like and I will do my best !."
+    
+
+  utter_recommend_Financial_Advisory:
+  - text: " Have you met my Portfolio Manager tool? Witcher Portfolio Manager ( that's me ) is a code-free dashboard to optimize your selected market.
+   it will help you to get the maximum possible return value through the list of the candidates: 
+   [Witcher Portfolio Manager_ Web based ](http://127.0.0.1:8050/)
+   
+   \n
+   
+   [Witcher Portfolio Manager_ analytics](http://localhost:8888/notebooks/python/Witcher/Witcher_Portfolio_Advisor.ipynb) "
+    image: "./Setup/Witcher.png"
+
+
+
+  utter_recommend_entertainment:
+  - buttons:
+    - payload: Cocktail_Master ### Action 
+      title: Make me a Drink
+    - payload: Movie_master # Entertaiment ==>
+      title: Wanna watch a movie?
+    - payload: words_story # Entertaiment ==>
+      title: words and their stories?
+    - payload: horror_story # Entertaiment ==>
+      title: tell me a horror story
+    - payload: Fiction # Entertaiment ==>
+      title: tell me a Fiction
+    - payload: Jok # Entertaiment ==>
+      title: tell me a Jok
+    
+    text: "Please let me know what would you like and I will do my best !."
+
+
+
+
+  utter_Movie_master_r:
+  - buttons:
+    - payload: movie_master_genre ### user_movie_master_genre 
+      title: recommend based on the genres
+    - payload: movie_master_name # user_movie_master_name
+      title: movie similarities 
+    text: "Please let me know what would you like and I will do my best !."
+
+  utter_cocktail_master_r:
+  - buttons:
+    - payload: cocktail_master_ingredients ### user_movie_master_genre 
+      title: recommend based on the ingredients
+    - payload: cocktail_master_name # user_movie_master_name
+      title: Cocktail similarities 
+    text: "Please let me know what would you like and I will do my best !."
+
+
+  #utter_PA_service
+
+  utter_PA_service:
+  - buttons:
+    - payload: News_Picker ### user_select_news_picker
+      title: google news analysis
+
+    - payload: NLP_NER # form ( STR_text : sting to be anlyizsed , "thank you : to exit from the form ")
+      title: Text Analysis
+    - payload: Reporting_Service  # Entertaiment ==>
+      title: Generate the desired reports
+    
+    text: "Please let me know what would you like and I will do my best !."
+
+
+
+
+actions:
+######## action_(form_name)_(slot_name)
+- action_ask_form_movie_genr_r_movie_genre
+- validate_form_movie_genr_r
+- action_reset
+- action_ask_form_movie_name_r_movie_name
+- validate_form_movie_name_r
+- action_ask_form_news_analysis_news_titel
+- validate_form_news_analysis
+- action_ask_form_cocktail_name_cocktail_name
+- validate_form_cocktail_name
+- action_ask_form_cocktail_ingridiants_cocktail_ingrid
+- validate_form_cocktail_ingridiants
+# - action_form_news_analysis_news_titel
+# - action_form_document_analysis_doc_str
+# - action_form_words_story_words_story
+
+
+
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

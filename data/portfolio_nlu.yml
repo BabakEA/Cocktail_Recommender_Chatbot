@@ -1,0 +1,17 @@
+version: "3.1"
+
+nlu:
+- intent: user_ask_market_view
+  examples: |
+    - what stock should i buy?
+    - can you suggest me some stock to buy
+    - show me the best portfolio
+    - build a portfolio
+    - can you please help me with building a stock portfolio
+    - stock to buy
+    - how's the market
+    - Want_Buils_a_Portfolio
+
+# - intent: chitchat/what_is_the_fabric
+#   examples: |
+#     - introduction_to_Data_Fabric_platform_Q1

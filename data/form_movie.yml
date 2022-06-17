@@ -1,0 +1,43 @@
+version: "3.1"
+
+stories:
+  ########################## form_movie_genr_r #############
+  # - movie_genre  #### Action , Validation 
+- story: form_movie_genr_r
+  steps:
+  # - intent: greet
+  # - action: utter_greet
+
+  - intent: user_movie_master_genre # charactristic
+  - action: form_movie_genr_r
+  - active_loop: form_movie_genr_r
+
+  - slot_was_set:
+    - requested_slot: movie_genre
+  - slot_was_set:
+    - movie_genre: Action
+
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_re_greet
+
+  ########################## form_movie_name_r #############
+  # - movie_genre  #### Action , Validation 
+- story: form_movie_name_r
+  steps:
+  # - intent: greet
+  # - action: utter_greet
+  - intent: user_movie_master_name
+  - action: form_movie_name_r
+  - active_loop: form_movie_name_r
+
+  - slot_was_set:
+    - requested_slot: movie_name
+  - slot_was_set:
+    - movie_name: Start Wars (1997)
+
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_re_greet

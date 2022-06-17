@@ -1,0 +1,85 @@
+# Configuration for Rasa NLU.
+# https://rasa.com/docs/rasa/nlu/components/
+language: en
+
+pipeline:
+# # No configuration for the NLU pipeline was provided. The following default pipeline was used to train your model.
+# # If you'd like to customize it, uncomment and adjust the pipeline.
+# # See https://rasa.com/docs/rasa/tuning-your-model for more information.
+  #  - name: "SpacyNLP"
+  # # language model to load
+  #    model: "en_core_web_md"
+  #    case_sensitive: False
+  # - name: printer.Printer
+  #   alias: start
+  # - name: tbfeats.TextBlobTokenizer
+
+
+  # - name: tbfeats.TextBlobFeaturizer
+  # - name: ftfeat.FastTextFeaturizer
+  #   cache_dir: "./whatlies/"
+  #   file: "cc.en.300.bin"
+  # # # - name: printer.Printer
+  # #   alias: after fasttext
+  # - name: outlierfeature.OutlierComponent
+  #   n_estimators: 100
+  # - name: outlierfeature.OutlierComponent
+  #   n_estimators: 200
+  # - name: outlierfeature.OutlierComponent
+  #   n_estimators: 500
+  - name: "Setup.white.WhitespaceTokenizer"
+    "use_word_boundaries": False
+    #"case_sensitive": false
+    "intent_tokenization_flag": False
+  - name: RegexFeaturizer
+    "case_sensitive": False
+  - name: LexicalSyntacticFeaturizer
+  - name: CountVectorsFeaturizer
+  - name: CountVectorsFeaturizer
+    oov_token: oov
+    analyzer: char_wb
+    min_ngram: 1
+    max_ngram: 4
+  - name: LexicalSyntacticFeaturizer
+  #- name: "CRFEntityExtractor"
+  #  "features": [
+  #           ["low", "upper"],
+  #           ["bias", "low", "prefix5", "prefix2", "suffix5", "suffix3",
+  #            "suffix2", "upper", "digit", "pattern"],
+  #           ["low", "upper"]
+  #         ]
+
+    # analyzer: char_wb
+    # min_ngram: 1
+    # max_ngram: 4
+  - name: DIETClassifier
+    constrain_similarities: True
+    epochs: 70
+  #- name: CRFEntityExtractor
+  - name: EntitySynonymMapper
+  - name: ResponseSelector
+    epochs: 70
+
+  # - name: ResponseSelector
+  #   epochs: 70
+  #   retrieval_intent: faq
+  - name: ResponseSelector
+    epochs: 70
+    retrieval_intent: chitchat
+  - name: FallbackClassifier
+    threshold: 0.2
+    ambiguity_threshold: 0.1
+#  - constrain_similarities: true
+
+# Configuration for Rasa Core.
+# https://rasa.com/docs/rasa/core/policies/
+policies:
+# # No configuration for policies was provided. The following default policies were used to train your model.
+# # If you'd like to customize them, uncomment and adjust the policies.
+# # See https://rasa.com/docs/rasa/policies for more information.
+  - name: MemoizationPolicy
+  - name: TEDPolicy
+    max_history: 6
+    epochs: 150
+  - name: RulePolicy
+

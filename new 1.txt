@@ -1,0 +1,10 @@
+forms:
+  - action_form_movie_genr_r_movie_genre
+  - action_form_movie_name_r_movie_name
+  - action_form_news_analysis_news_titel
+  - action_form_document_analysis_doc_str
+  - action_form_words_story_words_story
+
+
+##################333
+[greet]Recommendation_services > [utter_recommend] entertainment_recommendation> [utter_recommend_entertainment] Movie_master>[]

@@ -1,0 +1,22 @@
+version: "3.1"
+
+stories:
+  ########################## form_news_analysis #############
+  # - movie_genre  #### Action , Validation 
+- story: form_nlp_analysis
+  steps:
+  # - intent: greet
+  # - action: utter_greet
+
+  - intent: user_selct_nlp # charactristic
+  - action: form_nlp_analysis
+  - active_loop: form_nlp_analysis
+
+  - slot_was_set:
+    - requested_slot: str_articl
+  - slot_was_set:
+    - str_articl: "I am a Senior Data Scientist and leading my AI consulting firm (AI.Forest )."
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_re_greet
